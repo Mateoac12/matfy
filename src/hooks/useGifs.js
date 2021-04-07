@@ -1,22 +1,41 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { getGifs } from 'services/getGifs'
+import { GetTrendings } from 'services/getTrendings'
 
-export const UseGifs = ({ keyword = ""} = {}) => {
+export const UseGifs = ({ keyword = "", trending = false} = {}) => {
     const [loading, setLoading] = useState(true)
     const [gifs, setGifs] = useState([])
+
+    const handleGetGifs = useCallback( async (data) => {
+        const gifs = await data.map(({id, title, images}) => {
+            const img = images.downsized.url
+            const gifs = {id, title, img}
+            return gifs
+        })
+        return gifs
+    }, [])
 
     useEffect(() => {
         setLoading(true)
         getGifs({ keyword }).then(data => {
-            const gifs = data.map(({id, title, images}) => {
-                const img = images.downsized.url
-                const gifs = {id, title, img}
-                return gifs
+            handleGetGifs(data).then(gifs => {
+                setGifs(gifs)
+                setLoading(false)
             })
-            setGifs(gifs)
-            setLoading(false)
         })
-    }, [keyword])
+    }, [keyword, handleGetGifs])
+
+    useEffect(() => {
+        setLoading(true)
+        if (trending) {
+            GetTrendings().then(data => {
+                handleGetGifs(data).then(gifs => {
+                    setGifs(gifs)
+                    setLoading(false)
+                })
+            })
+        }
+    }, [trending, handleGetGifs])
 
     return {gifs, loading}
 }
