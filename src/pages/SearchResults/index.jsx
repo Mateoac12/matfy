@@ -1,9 +1,15 @@
-import React from 'react'
+import ListOfGifs from 'components/ListOfGifs'
+import PrincipalTitle from 'components/PrincipalTitle'
 
 const SearchResults = ({ params }) => {
     const { keyword } = params
+
     return <>
-        Resultado: {keyword}
+        <PrincipalTitle
+            title={"Tus Gifs de "}
+            keyword={keyword}
+        />
+        <ListOfGifs keyword={keyword} />
     </>
 }
 

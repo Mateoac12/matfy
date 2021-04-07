@@ -1,0 +1,16 @@
+.gif {
+    box-sizing: border-box;
+    border: .5rem solid #171717;
+    background-color: #171717;
+    margin: 1rem 2rem;
+
+    &__img {
+        width: 100%;
+        max-height: 200px;
+        overflow: hidden;
+    }
+
+    &__title {
+        color: #ffffff;
+    }
+}
