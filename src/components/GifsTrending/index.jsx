@@ -15,4 +15,4 @@ const GifsTrending = () => {
     </section>
 }
 
-export default GifsTrending
+export default React.memo(GifsTrending)

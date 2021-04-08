@@ -24,4 +24,23 @@
         max-width: 200px;
         margin: 3rem;
     }
+
+    @media (min-width: 998px) {
+        flex-direction: row;
+        justify-content: space-around;
+        background-color: transparent;
+        padding: 0;
+        margin-bottom: 3em;
+        position: sticky;
+        left: 0;
+        top: 0;
+
+        &::before {
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        }
+
+        &__logo {
+            margin: 1em;
+        }
+    }
 }

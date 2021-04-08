@@ -14,4 +14,4 @@ const LastSearches = () => {
     </section>
 }
 
-export default LastSearches
+export default React.memo(LastSearches)
