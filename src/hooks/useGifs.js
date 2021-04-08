@@ -17,12 +17,15 @@ export const UseGifs = ({ keyword = "", trending = false} = {}) => {
 
     useEffect(() => {
         setLoading(true)
-        getGifs({ keyword }).then(data => {
-            handleGetGifs(data).then(gifs => {
-                setGifs(gifs)
-                setLoading(false)
+        if (keyword !== "") {
+            getGifs({ keyword }).then(data => {
+                handleGetGifs(data).then(gifs => {
+                    setGifs(gifs)
+                    localStorage.setItem("lastSearches", JSON.stringify(gifs))
+                    setLoading(false)
+                })
             })
-        })
+        }
     }, [keyword, handleGetGifs])
 
     useEffect(() => {
