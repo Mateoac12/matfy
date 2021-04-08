@@ -1,11 +1,11 @@
-import PrincipalTitle from 'components/PrincipalTitle'
 import React from 'react'
 import GifsTrending from 'components/GifsTrending'
+import ListOfTrendings from 'components/ListOfTrendings'
 
 const Home = () => {
     return <>
-        <PrincipalTitle title={"Tendencias!"} />
         <GifsTrending />
+        <ListOfTrendings />
     </>
 }
 
