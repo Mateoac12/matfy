@@ -10,5 +10,5 @@ export const UseStorage = ({ key }) => {
         }
     }, [key])
 
-    return { storage }
+    return { storage, setStorage }
 }
