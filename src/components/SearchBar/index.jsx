@@ -5,12 +5,12 @@ import './index.scss'
 const SearchBar = ({ placeholder = ""} = {}) => {
     const [keyword, setKeyword] = useState("")
     const [location, setLocation] = useLocation()
-
+    
     const handleSubmit = (e) => {
         e.preventDefault()
         setLocation(`/search/${keyword}`)
     }
-
+    
     const handleChange = (e) => {
         setKeyword(e.target.value)
     }
@@ -27,4 +27,4 @@ const SearchBar = ({ placeholder = ""} = {}) => {
     </form>
 }
 
-export default SearchBar
+export default React.memo(SearchBar)

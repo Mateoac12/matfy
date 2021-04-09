@@ -5,6 +5,7 @@ import { Route } from 'wouter'
 
 const Home = React.lazy(() => import('./pages/Home'))
 const SearchResults = React.lazy(() => import('./pages/SearchResults'))
+const Detail = React.lazy(() => import('./pages/Detail'))
 
 function App() {
   return (
@@ -18,6 +19,10 @@ function App() {
         <Route
           component={SearchResults}
           path="/search/:keyword"
+        />
+        <Route
+          component={Detail}
+          path="/detail/:id"
         />
       </Suspense>
     </div>

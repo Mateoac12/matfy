@@ -1,20 +1,13 @@
 import React from 'react'
-import logo from 'logo.svg'
 import SearchBar from 'components/SearchBar'
-import { Link } from 'wouter'
 
 import './index.scss'
+import Logo from 'components/Logo'
 
 const Header = () => {
     return <>
         <header className="header">
-            <Link to="/">
-                <img
-                    alt="logo de matfy"
-                    className="header__logo"    
-                    src={logo}
-                />
-            </Link>
+            <Logo />
             <SearchBar
                 placeholder={"Search gifs here..."}
             />

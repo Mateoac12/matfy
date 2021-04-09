@@ -1,20 +1,12 @@
-import React, { useState } from 'react'
+import React from 'react'
 import './index.scss'
-import GifModal from 'components/GifModal'
+import { Link } from 'wouter'
 
 const Gif = ({ gifs }) => {
-    const [showModal, setShowModal] = useState(false)
-
-    const handleViewGif = (e) => {
-        setShowModal(true)
-        console.log(e)
-    }
-
-
     return <>
     {
         gifs.map(({title, img, id}) => 
-            <div onClick={handleViewGif} className="gif" key={`container-${id}`}>
+            <Link href={`/detail/${id}`} className="gif" key={`container-${id}`}>
                 <img
                     alt="title"
                     className="gif__img"
@@ -22,12 +14,10 @@ const Gif = ({ gifs }) => {
                     src={img}
                 />
                 <span key={`title-${id}`} className="gif__title">{title}</span>
-            </div>
+            </Link>
         )
     }
-    {
-        showModal ? <GifModal /> : null
-    }
+
     </>
 }
 

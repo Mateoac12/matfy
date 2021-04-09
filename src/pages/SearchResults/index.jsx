@@ -6,7 +6,6 @@ import { UseGifs } from 'hooks/useGifs'
 const SearchResults = ({ params }) => {
     const { keyword } = params
     const {gifs, loading} = UseGifs({keyword})
-    console.log(gifs, loading)
 
     return <>
         <PrincipalTitle
