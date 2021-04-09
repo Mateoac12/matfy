@@ -1,23 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Suspense } from 'react'
+import Header from 'components/Header';
+import './App.scss';
+import { Route } from 'wouter'
+
+const Home = React.lazy(() => import('./pages/Home'))
+const SearchResults = React.lazy(() => import('./pages/SearchResults'))
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <Suspense fallback={null}>
+        <Route
+          component={Home}
+          path="/"
+        />
+        <Route
+          component={SearchResults}
+          path="/search/:keyword"
+        />
+      </Suspense>
     </div>
   );
 }
