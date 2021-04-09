@@ -12,11 +12,18 @@ export const UseNearScreen = ({margin = "100px"} = {}) => {
             }
         }
 
-        const observer = new IntersectionObserver(handleObserve, {
-            "rootMargin": `${margin}`
+        Promise.resolve(
+            typeof IntersectionObserver !== "undefined"
+                ? IntersectionObserver
+                : import('intersection-observer')
+        ).then(() => {
+            const observer = new IntersectionObserver(handleObserve, {
+                "rootMargin": `${margin}`
+            })
+    
+            observer.observe(elementRef.current)
         })
 
-        observer.observe(elementRef.current)
     }, [elementRef, margin])
 
     return { isNear, elementRef }
