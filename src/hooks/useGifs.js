@@ -16,7 +16,6 @@ export const UseGifs = ({ keyword = "", trending = false} = {}) => {
     }, [])
 
     useEffect(() => {
-        setLoading(true)
         if (keyword !== "") {
             getGifs({ keyword }).then(data => {
                 handleGetGifs(data).then(gifs => {
@@ -29,7 +28,6 @@ export const UseGifs = ({ keyword = "", trending = false} = {}) => {
     }, [keyword, handleGetGifs])
 
     useEffect(() => {
-        setLoading(true)
         if (trending) {
             GetTrendings().then(data => {
                 handleGetGifs(data).then(gifs => {

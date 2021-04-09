@@ -1,7 +1,10 @@
 .home {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
     column-gap: 2rem;
+    
+    @media (min-width: 998px) {
+        grid-template-columns: repeat(auto-fill, minmax(600px, 1fr));
+    }
 }
 
 .listOfTrendings {

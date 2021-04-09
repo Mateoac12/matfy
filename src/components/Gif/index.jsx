@@ -14,7 +14,7 @@ const Gif = ({ gifs }) => {
     return <>
     {
         gifs.map(({title, img, id}) => 
-            <div onClick={handleViewGif} className="gif">
+            <div onClick={handleViewGif} className="gif" key={`container-${id}`}>
                 <img
                     alt="title"
                     className="gif__img"

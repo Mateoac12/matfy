@@ -4,7 +4,7 @@ import Category from 'components/Category'
 
 const Categories = ({ categories }) => {
     return <>
-    { categories.map(category => <Category title={category} />)}
+    { categories.map(category => <Category title={category} key={category} />)}
     </>
 }
 
