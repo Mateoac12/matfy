@@ -1,7 +1,7 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import App from './App';
 
-test.only('renders learn react link', async () => {
+test  ('renders learn react link', async () => {
   const { findByText } = render(<App />);
   const title = await findByText("SEARCH")
   expect(title).toBeVisible()
@@ -15,6 +15,6 @@ test('search gif', async () => {
   fireEvent.change(searchBar, {target: {value: "pokemon"}})
   fireEvent.click(buttonSearch)
 
-  const titleOfSearch = await screen.findByText('pokemon')
+  const titleOfSearch = await screen.findByText('Tus Gifs de pokemon')
   expect(titleOfSearch).toBeVisible()
 })
