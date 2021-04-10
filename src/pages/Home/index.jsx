@@ -5,11 +5,16 @@ import LastSearches from 'components/LastSearches'
 import Loading from 'components/Loading'
 import { UseNearScreen } from 'hooks/useNearScreen'
 import './index.scss'
+import { Helmet } from 'react-helmet'
 
 const Home = () => {
     const { isNear, elementRef } = UseNearScreen()
 
     return <>
+        <Helmet>
+            <title>Home | Matfy</title>
+            <meta name="description" content="Buscar gifs en Matfy, pagina para buscar gifs"/>
+        </Helmet>
         <Suspense fallback={<Loading />}>
             <div className="home">
                 <GifsTrending />

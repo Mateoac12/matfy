@@ -2,18 +2,34 @@ import ListOfGifs from 'components/ListOfGifs'
 import Loading from 'components/Loading'
 import PrincipalTitle from 'components/PrincipalTitle'
 import { UseGifs } from 'hooks/useGifs'
+import { Helmet } from 'react-helmet'
 
 const SearchResults = ({ params }) => {
     const { keyword } = params
     const {gifs, loading} = UseGifs({keyword})
 
     return <>
-        <PrincipalTitle
-            title={"Tus Gifs de "}
-            keyword={keyword}
-        />
+        <PrincipalTitle title={"Tus Gifs de "} keyword={keyword} />
         {
-            loading ? <Loading /> : <ListOfGifs gifs={gifs} />
+            loading
+                ? (
+                    <>
+                        <Helmet>
+                            <title>Cargando...</title>
+                            <meta name="description" content="Cargando gifs de Matfy"/>
+                        </Helmet>
+                        <Loading />
+                    </>
+                )
+                : (
+                    <>
+                        <Helmet>
+                            <title>{String(gifs.length)} resultados de {keyword} | Matfy</title>
+                            <meta name="description" content={`Busqueda de ${keyword} en Matfy, pagina para buscar gifs`}/>
+                        </Helmet>
+                        <ListOfGifs gifs={gifs} />
+                    </>
+                )
         }
     </>
 }
