@@ -12,6 +12,7 @@ const Gif = ({ gifs }) => {
                     className="gif__img"
                     key={`img-${id}`}
                     src={img}
+                    loading="lazy"
                 />
                 <span key={`title-${id}`} className="gif__title">{title}</span>
             </Link>

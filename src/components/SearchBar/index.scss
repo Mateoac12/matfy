@@ -6,6 +6,14 @@
         border: 1px solid #f6f6f6;
     }
 
+    &__select {
+        outline: none;
+        background-color: #ffffff;
+        padding: .5em;
+        border: none;
+        text-transform: capitalize;
+    }
+
     &__button {
         border-left: none;
         color: #171717;

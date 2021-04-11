@@ -5,8 +5,8 @@ import { UseGifs } from 'hooks/useGifs'
 import { Helmet } from 'react-helmet'
 
 const SearchResults = ({ params }) => {
-    const { keyword } = params
-    const {gifs, loading} = UseGifs({keyword})
+    const { keyword, rating } = params
+    const {gifs, loading} = UseGifs({ keyword, rating })
 
     return <>
         <PrincipalTitle title={"Tus Gifs de "} keyword={keyword} />

@@ -1,0 +1,1 @@
+export const RATING_TYPE = ['g', 'pg', 'pg-13', 'r']
