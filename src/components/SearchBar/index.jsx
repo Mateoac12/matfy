@@ -1,24 +1,26 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useLocation } from 'wouter'
 import './index.scss'
 import { RATING_TYPE } from 'config/searchConfig'
+import { useForm } from './hook'
 
 const SearchBar = ({ placeholder = ""} = {}) => {
-    const [keyword, setKeyword] = useState("")
-    const [rating, setRating] = useState('g')
-    const [location, setLocation] = useLocation()
-    
+    // eslint-disable-next-line
+    const [_, setLocation] = useLocation()
+
+    const { keyword, rating, updateKeyword, updateRating } = useForm()
+
     const handleSubmit = (e) => {
         e.preventDefault()
         setLocation(`/search/${keyword}/${rating}`)
     }
     
     const handleChange = (e) => {
-        setKeyword(e.target.value)
+        updateKeyword(e.target.value)
     }
 
     const handleRatingChange = (e) => {
-        setRating(e.target.value)
+        updateRating(e.target.value)
     }
 
     return <form onSubmit={handleSubmit} className="searchbar">
