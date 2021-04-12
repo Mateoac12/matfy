@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from 'react'
 import { getGifs } from 'services/getGifs'
 import { GetTrendings } from 'services/getTrendings'
 
-export const UseGifs = ({ keyword = "", trending = false, rating } = {}) => {
+export const UseGifs = ({ keyword = "", trending = false, rating, lang } = {}) => {
     const [loading, setLoading] = useState(true)
     const [gifs, setGifs] = useState([])
 
@@ -15,9 +15,10 @@ export const UseGifs = ({ keyword = "", trending = false, rating } = {}) => {
         return gifs
     }, [])
 
+    // update search results
     useEffect(() => {
         if (keyword !== "") {
-            getGifs({ keyword, rating }).then(data => {
+            getGifs({ keyword, rating, lang }).then(data => {
                 handleGetGifs(data).then(gifs => {
                     setGifs(gifs)
                     localStorage.setItem("lastSearches", JSON.stringify(gifs))
@@ -25,8 +26,9 @@ export const UseGifs = ({ keyword = "", trending = false, rating } = {}) => {
                 })
             })
         }
-    }, [keyword, handleGetGifs, rating])
+    }, [keyword, handleGetGifs, rating, lang])
 
+    // update trendings on home
     useEffect(() => {
         if (trending) {
             GetTrendings().then(data => {
